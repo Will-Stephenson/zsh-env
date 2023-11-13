@@ -29,7 +29,7 @@ set title
 
 " Theme settings
 set background=dark
-color monokai_pro
+"color monokai_pro
 
 " Misc
 set scrolloff=5 " Keep 3 lines below and above the cursor
