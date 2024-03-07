@@ -1,0 +1,163 @@
+{
+    "workbench.startupEditor": "none",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "workbench.colorTheme": "Monokai Pro",
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.sideBar.location": "right",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false,
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#156161",
+        "activityBar.activeBorder": "#000000",
+        "activityBar.background": "#156161",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#000000",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "statusBar.background": "#0f4646",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#156161",
+        "titleBar.activeBackground": "#0f4646",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#0f4646",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "sash.hoverBorder": "#156161",
+        "statusBarItem.remoteBackground": "#0f4646",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "tab.activeBackground": "#424242",
+        "tab.activeForeground": "#ffffff"
+    },
+    "editor.tokenColorCustomizations": {
+        "[dark-plus-syntax]": {
+            "comments": "#5b8f3d"
+        }
+    },
+    "peacock.color": "#531616",
+    "angular.enable-strict-mode-prompt": false,
+    "editor.minimap.size": "fit",
+    "files.associations": {
+        "*.tsv": "tsv"
+    },
+    "[tsv]": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": false
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.profiles.linux": {
+
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "/usr/bin/zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.profiles.windows": {
+
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "zsh": {
+            "path": "/usr/bin/zsh" 
+        }
+    },
+    "terminal.integrated.localEchoStyle": "dim",
+    "editor.autoClosingQuotes": "never",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "vim.useSystemClipboard": true,
+    "vim.incsearch": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+      {
+        "before": ["j", "j"],
+        "after": ["<Esc>"]
+      }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
+        },
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["lineBreakInsert"],
+            "silent": true
+        },
+        {
+            "before": ["J"],
+            "after": ["5", "j"]
+        },
+        {
+            "before": ["K"],
+            "after": ["5", "k"]
+        },
+        {
+            "before": ["<Leader>", "j"],
+            "after": ["J"]
+        },
+        {
+            "before": ["<Leader>", "t", "t"],
+            "commands": [":tabnew"]
+        },
+        {
+            "before": ["<Leader>", "t", "n"],
+            "commands": [":tabnext"]
+        },
+        {
+            "before": ["<Leader>", "t", "p"],
+            "commands": [":tabprev"]
+        },
+        {
+            "before": ["<Leader>", "t", "o"],
+            "commands": [":tabo"]
+        },
+        {
+            "before": ["leader", "w"],
+            "commands": [ "workbench.action.files.save" ]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+      "<C-a>": false,
+      "<C-f>": false
+    },
+    "extensions.experimental.affinity": {
+      "vscodevim.vim": 1
+    },
+    "editor.smoothScrolling": true,
+    "vim.smartRelativeLine": true,
+    "editor.cursorSurroundingLines": 8,
+    "explorer.confirmDragAndDrop": false,
+    "debug.javascript.autoAttachFilter": "smart"
+}
