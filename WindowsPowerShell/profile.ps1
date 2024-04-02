@@ -1,0 +1,1 @@
+oh-my-posh init pwsh --config ~/Documents/WindowsPowerShell/atomic.omp.json | Invoke-Expression
