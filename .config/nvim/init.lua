@@ -776,8 +776,19 @@ require('lazy').setup({
   },
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- Toggle file tree
 vim.keymap.set('n', '<leader>t', function()
   vim.cmd.NvimTreeFindFileToggle()
 end)
+
+-- View open file buffers
+local tsbuiltin = require 'telescope.builtin'
+vim.keymap.set('n', '<leader>b', function()
+  tsbuiltin.buffers {
+    sort_mru = true,
+    ignore_current_buffer = true,
+  }
+end)
+
+-- View file history
+vim.keymap.set('n', '<leader>o', tsbuiltin.oldfiles, {})
