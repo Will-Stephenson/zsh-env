@@ -1,6 +1,12 @@
 " Will's finally not garbage .vimrc
 " 05/06/2020
 
+" Standard remaps (to be exported to other vim envs, e.g. Visual Studio)
+let mapleader = " "
+nnoremap J 5j
+nnoremap K 5k
+nnoremap <leader>j J
+
 " Pathogen
 set nocp
 execute pathogen#infect()
