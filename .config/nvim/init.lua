@@ -1,6 +1,9 @@
 --  My usual remaps
 vim.keymap.set('n', 'J', '5j')
 vim.keymap.set('n', 'K', '5k')
+vim.keymap.set('i', '<C-d>', '<Esc>bdawa ')
+--vim.keymap.set('i', '<C-d>', ' <Esc>ldbi')
+vim.keymap.set('i', '<C-p>', ' <Esc>pi')
 
 --  Leader config (must be done before plugins
 vim.g.mapleader = ' '
@@ -147,6 +150,13 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+
+  {
+    'ellisonleao/glow.nvim',
+    config = true,
+    cmd = 'Glow',
+  },
+
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -274,8 +284,6 @@ require('lazy').setup({
           },
         },
       }
-      local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader>p', builtin.find_files, {})
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
@@ -286,6 +294,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>p', builtin.find_files, {})
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -464,10 +473,9 @@ require('lazy').setup({
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
-
+        tsserver = {},
+        rust_analyzer = {},
+        html = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -476,6 +484,23 @@ require('lazy').setup({
             Lua = {
               completion = {
                 callSnippet = 'Replace',
+              },
+              runtime = {
+                -- Tell the language server which version of Lua you're using
+                -- (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+              },
+              -- Make the server aware of Neovim runtime files
+              workspace = {
+                checkThirdParty = false,
+                library = {
+                  vim.env.VIMRUNTIME,
+                  -- Depending on the usage, you might want to add additional paths here.
+                  -- "${3rd}/luv/library"
+                  -- "${3rd}/busted/library",
+                },
+                -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                -- library = vim.api.nvim_get_runtime_file("", true)
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
@@ -613,7 +638,8 @@ require('lazy').setup({
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
+          --['<C-Space>'] = cmp.mapping.complete {},
+          -- had to disable or it would conflict with my tmux leader mapping
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
@@ -734,6 +760,19 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter', -- Mandatory
+        'nvim-tree/nvim-web-devicons', -- Optional but recommended
+    },
+    config = function()
+        require('render-markdown').setup({})
+    end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context'
+  },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -745,7 +784,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -777,8 +816,13 @@ require('lazy').setup({
 })
 
 -- Toggle file tree
-vim.keymap.set('n', '<leader>t', function()
+vim.keymap.set('n', '<leader>tt', function()
   vim.cmd.NvimTreeFindFileToggle()
+end)
+
+-- Open file tree
+vim.keymap.set('n', '<leader>to', function()
+  vim.cmd.NvimTreeOpen()
 end)
 
 -- View open file buffers
@@ -790,5 +834,6 @@ vim.keymap.set('n', '<leader>b', function()
   }
 end)
 
--- View file history
-vim.keymap.set('n', '<leader>o', tsbuiltin.oldfiles, {})
+-- Plugin related keymaps
+vim.keymap.set('n', '<leader>o', tsbuiltin.oldfiles, {}) -- View file history
+vim.keymap.set('n', '<leader>m', ':Glow<enter>', {}) -- Render Markdown
