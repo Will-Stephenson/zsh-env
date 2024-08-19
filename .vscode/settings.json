@@ -1,8 +1,8 @@
 {
     "workbench.startupEditor": "none",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
-    "workbench.colorTheme": "Monokai Pro",
-    "workbench.iconTheme": "Monokai Pro Icons",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha",
     "workbench.sideBar.location": "right",
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
@@ -26,11 +26,6 @@
         "statusBarItem.remoteForeground": "#e7e7e7",
         "tab.activeBackground": "#424242",
         "tab.activeForeground": "#ffffff"
-    },
-    "editor.tokenColorCustomizations": {
-        "[dark-plus-syntax]": {
-            "comments": "#5b8f3d"
-        }
     },
     "peacock.color": "#531616",
     "angular.enable-strict-mode-prompt": false,
